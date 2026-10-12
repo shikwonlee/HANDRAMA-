@@ -7,10 +7,26 @@
   <meta name="description" content="Dedicated home for Korean drama series and film with streaming information, episodes, ratings, and filters." />
   <meta property="og:title" content="한드 · HANDRAMA" />
   <meta property="og:description" content="Dedicated home for Korean drama series and film with streaming information, episodes, ratings, and filters." />
+  
+  <!-- Critical dark theme default to prevent white flash -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #090a0f !important;
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+  </style>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/src/styles/main.css" />
+  
+  <!-- Relative path for GitHub Pages and Vercel compatibility -->
+  <link rel="stylesheet" href="./src/styles/main.css" />
 </head>
 <body>
   <!-- Navigation Header Mount -->
@@ -29,7 +45,7 @@
   <!-- Toast Notification Mount -->
   <div id="toast-notification"></div>
 
-  <!-- App Modular Entry Point -->
-  <script type="module" src="/src/app.js"></script>
+  <!-- Relative path ES Module Entry Point -->
+  <script type="module" src="./src/app.js"></script>
 </body>
 </html>

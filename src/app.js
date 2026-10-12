@@ -81,7 +81,7 @@ class HandramaRouter {
         renderFavoritesView(this.routes.favorites);
         break;
       case 'search':
-        // search is handled via search input
+        this.renderSearchLanding(params.query || '');
         break;
     }
   }
@@ -155,6 +155,39 @@ class HandramaRouter {
       homeEl.dataset.initialized = 'true';
     } catch (err) {
       console.error('Failed to load home catalog', err);
+    }
+  }
+
+  renderSearchLanding(initialQuery = '') {
+    const searchView = this.routes.search;
+    if (!initialQuery) {
+      searchView.innerHTML = `
+        <div class="search-view-wrap">
+          <h1 class="search-query-banner">Search Korean Titles</h1>
+          <p class="browse-subhead">Explore Korean dramas, feature films, and broadcast hits</p>
+          <div style="margin-bottom: 24px; max-width: 600px;">
+            <input type="text" id="mobile-search-page-input" class="search-input" 
+              style="width: 100%; height: 48px; border-radius: var(--radius-md); font-size: 15px; padding: 0 18px;" 
+              placeholder="Type title, actor, or genre (e.g. Queen of Tears)..." 
+              oninput="window.__hdOnSearchInput(this.value)" />
+          </div>
+          <div class="section-headline" style="margin-bottom: 12px;">
+            <span class="section-idx">HOT</span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Trending Searches</span>
+          </div>
+          <div class="filter-chip-tray" style="flex-wrap: wrap; margin-bottom: 30px;">
+            ${['Queen of Tears', 'Squid Game', 'Crash Landing on You', 'Vincenzo', 'My Demon', 'Moving', 'Goblin', 'The Glory'].map(kw => `
+              <button class="filter-chip-btn" onclick="window.__hdQuickSearch('${kw}')">${kw}</button>
+            `).join('')}
+          </div>
+          <div class="catalog-grid" id="search-results-grid"></div>
+        </div>
+      `;
+      setTimeout(() => {
+        document.getElementById('mobile-search-page-input')?.focus();
+      }, 80);
+    } else {
+      window.__hdOnSearchInput(initialQuery);
     }
   }
 
@@ -233,8 +266,26 @@ window.__hdOnSearchInput = function(query) {
   }, 280);
 };
 
-// Bootstrap application on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  renderNavigation(document.getElementById('nav-container'), 'home');
-  window.__hdRouter.navigate('home');
-});
+window.__hdQuickSearch = function(query) {
+  const input = document.getElementById('mobile-search-page-input') || document.getElementById('desktop-search-input');
+  if (input) input.value = query;
+  window.__hdOnSearchInput(query);
+};
+
+// Robust bootstrap: runs immediately if DOM is ready, or on DOMContentLoaded if still loading
+function initApp() {
+  const navContainer = document.getElementById('nav-container');
+  if (navContainer) {
+    renderNavigation(navContainer, 'home');
+  }
+  if (window.__hdRouter) {
+    window.__hdRouter.navigate('home');
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  // DOM is already ready (standard with type="module" on Vercel/fast CDNs)
+  initApp();
+}
