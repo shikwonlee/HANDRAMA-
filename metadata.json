@@ -1,0 +1,8 @@
+{
+  "name": "HANDRAMA",
+  "description": "Dedicated home for Korean drama series and film with streaming information, episodes, ratings, and filters.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
