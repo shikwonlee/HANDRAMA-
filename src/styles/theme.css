@@ -1,0 +1,53 @@
+/* ============================================================
+   HANDRAMA DESIGN SYSTEM TOKENS
+   Theme: Obsidian Crimson Noir (Korean Cinema Aesthetic)
+   ============================================================ */
+
+:root {
+  /* Canvas & Elevations */
+  --bg-canvas: #090a0f;
+  --bg-surface: #11141d;
+  --bg-surface-elevated: #181c28;
+  --bg-surface-hover: #202636;
+  --bg-glass: rgba(12, 14, 21, 0.82);
+
+  /* Brand Accents */
+  --crimson: #f43f5e;
+  --crimson-hover: #fb7185;
+  --crimson-subtle: rgba(244, 63, 94, 0.12);
+  --crimson-glow: rgba(244, 63, 94, 0.28);
+  --gold: #f59e0b;
+  --gold-subtle: rgba(245, 158, 11, 0.14);
+
+  /* Typography */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8492a6;
+  --text-dim: #556276;
+
+  /* Hairline Borders & Shadows */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(244, 63, 94, 0.6);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+
+  /* Layout Dimensions */
+  --nav-height: 68px;
+  --page-px: clamp(20px, 4.5vw, 64px);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  /* Font Families */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Noto Serif KR', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Motion Timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-out-expo);
+  --transition-normal: 240ms var(--ease-out-expo);
+}
