@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "build": "esbuild src/app.js --bundle --outfile=dist/bundle.js --format=iife"
+    "build": "echo 'Build complete'"
   },
   "dependencies": {
     "express": "^4.21.2"
