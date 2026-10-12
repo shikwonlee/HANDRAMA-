@@ -45,7 +45,7 @@
   <!-- Toast Notification Mount -->
   <div id="toast-notification"></div>
 
-  <!-- Relative path ES Module Entry Point -->
-  <script type="module" src="./src/app.js"></script>
+  <!-- Bundled script: IIFE format avoids module MIME type restrictions on Vercel and GitHub Pages -->
+  <script defer src="./dist/bundle.js"></script>
 </body>
 </html>
